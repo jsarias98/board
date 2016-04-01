@@ -1,1 +1,48 @@
-<div class=heading>Ingresa con tu cuenta</div> <div class=input> <form class=form-horizontal name=loginForm role=form ng-submit=userLogin()> <div class=login-input-group> <span class=login-input-group-addon><i class="fa fa-at fa-fw"></i></span> <input type=email class=form-control maxlength=150 placeholder=correo ng-model=login.email required> </div> <div class=login-input-group> <span class=login-input-group-addon><i class="fa fa-key fa-fw"></i></span><input type={{passType}} class=form-control placeholder=contrase&ntilde;a maxlength=12 ng-model=login.password required> <span class=login-input-group-plus><i class="fa {{passIcon}} fa-fw"></i><input type=checkbox ng-model=passView ng-click=togglePass()></span> </div> <div> <div vc-recaptcha theme=dark key="'6Lc33RMTAAAAAFI4x6ASU33AjF1z55qSXTIZ_NoJ'"></div> </div> <button type=submit class="btn btn-default btn-lg submit" ng-disabled=loginForm.$invalid>Iniciar Sesi&oacute;n</button> </form>  </div> <div class=rightFooter> <a ui-sref=signup>No tienes cuenta?</a> <a ui-sref=forgot-password class=m-l>Olvidaste la contrase&ntilde;a?</a> </div> <div ng-controller=ModalDemoCtrl> <script type=text/ng-template id=myModalContent.html> <div class="modal-header"> <h3 class="modal-title">{{items.title}}</h3> </div> <div class="modal-body"> <div class="high-padding text-center"> {{items.message;}} </div> </div> <div class="modal-footer"> <button class="btn btn-primary btn-rounded" ng-click="ok()">Confirm</button> </div> </script> </div>
+<div class="heading">Ingresa con tu cuenta</div>
+
+<div class="input">
+	<form class="form-horizontal" name="loginForm" role="form"
+		ng-submit="userLogin()">
+		<div class="login-input-group">
+			<span class="login-input-group-addon"><i
+				class="fa fa-at fa-fw"></i></span> <input type="email" class="form-control"
+				maxlength="150" placeholder="correo" ng-model="login.email" required>
+		</div>
+		<div class="login-input-group">
+			<span class="login-input-group-addon"><i
+				class="fa fa-key fa-fw"></i></span><input type="{{passType}}"
+				class="form-control" placeholder="contrase&ntilde;a" maxlength="12"
+				ng-model="login.password" required>
+			<span class="login-input-group-plus"><i class="fa {{passIcon}} fa-fw"></i><input type="checkbox" value=""  ng-model="passView" ng-click="togglePass()"></span>
+		</div>
+		<div>
+			<div vc-recaptcha theme="dark" key="'6Lc33RMTAAAAAFI4x6ASU33AjF1z55qSXTIZ_NoJ'"></div>
+		</div>
+		<button type="submit" class="btn btn-default btn-lg submit"
+			ng-disabled="loginForm.$invalid">Iniciar Sesi&oacute;n</button>
+	</form>
+	<!--<div class="login-other text-right">Or Login with
+		<a href="javascript:;" class="m-l-sm"><i class="fa fa-facebook"></i></a>
+		<a href="javascript:;" class="m-l-sm"><i class="fa fa-twitter"></i></a>
+		<a href="javascript:;" class="m-l-sm"><i class="fa fa-google-plus gplus"></i></a>
+	</div>-->
+</div>
+<div class="rightFooter">
+	<a ui-sref="signup">No tienes cuenta?</a> <a ui-sref="forgot-password"
+		class="m-l">Olvidaste la contrase&ntilde;a?</a>
+</div>
+<div ng-controller="ModalDemoCtrl">
+	<script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">{{items.title}}</h3>
+            </div>
+            <div class="modal-body">
+                <div class="high-padding text-center">
+                    {{items.message;}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-rounded" ng-click="ok()">Confirm</button>
+            </div>
+        </script>
+</div>

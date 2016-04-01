@@ -1,1 +1,126 @@
-<pageheader pagename=Usuarios subtitle="Directorio activo"></pageheader> <div class=conter-wrapper> <div class=row ng-if=!showList> <div class=col-md-12> <div class="panel panel-primary"> <div class=panel-heading> <h3 class=panel-title> Gesti&oacute;n de Usuario <div class="panel-control pull-right"> <a class=panelButton><i class="fa fa-refresh"></i></a> <a class=panelButton><i class="fa fa-minus"></i></a> <a class=panelButton><i class="fa fa-remove"></i></a> </div> </h3> </div> <div class=panel-body> <form class=form-horizontal> <div class=form-group> <label for=inputEmail3 class="col-sm-2 control-label">C.C.</label> <div class=col-sm-4> <p class=form-control-static>{{user.cc_user}}</p> </div> <label for=inputEmail3 class="col-sm-2 control-label">Nombre</label> <div class=col-sm-4> <p class=form-control-static>{{user.name}}</p> </div> </div> <hr> <div class=form-group> <label for=inputPassword3 class="col-sm-2 control-label">Correo</label> <div class=col-sm-4> <p class=form-control-static>{{user.mail}}</p> </div> <label for=inputtext class="col-sm-2 control-label">Telefono</label> <div class=col-sm-4> <p class=form-control-static>{{user.phone}}</p> </div> </div> <hr> <div class=form-group> <label for=inputtext class="col-sm-2 control-label">Estado</label> <div class=col-sm-4> <div class=onoffswitch> <input type=checkbox name=onoffswitch class=onoffswitch-checkbox id=switchUser ng-model=user.enabled ng-click=activeUser()> <label class=onoffswitch-label for=switchUser> <span class=onoffswitch-inner></span> <span class=onoffswitch-switch></span> </label> </div> </div> </div> </form> </div> </div> </div> <div class=col-md-12> <div class="panel panel-primary"> <div class=panel-heading> <h3 class=panel-title> Planes <div class="panel-control pull-right"> <a class=panelButton><i class="fa fa-refresh"></i></a> <a class=panelButton><i class="fa fa-minus"></i></a> <a class=panelButton><i class="fa fa-remove"></i></a> </div> </h3> </div> <div class=panel-body> <div class=col-sm-4 ng-repeat="p in planes"> <div class="panel panel-default"> <div class=panel-body> <div class=text-center> <h4>{{p.name}}</h4> <button class="btn btn-default" ng-click=suscribe(p.id_plans) ng-disabled=!user.enabled>Inscribir</button> </div> </div> </div> </div> </div> </div> </div> </div> <div class=row ng-if=showList> <div class=col-sm-12> <div class="panel panel-default"> <div class=panel-heading> <h3 class=panel-title> Lista de Usuarios <div class="panel-control pull-right"> <a class=panelButton><i class="fa fa-refresh"></i></a> <a class=panelButton><i class="fa fa-minus"></i></a> <a class=panelButton><i class="fa fa-remove"></i></a> </div> </h3> </div> <div class=panel-body> <table class="table table-hover"> <thead> <tr> <th>Nombre</th> <th>Correo</th> <th>Perfil</th> <th>Estado</th> </tr> </thead> <tbody> <tr ng-repeat="u in users"> <td>{{u.name}}</td> <td>{{u.mail}}</td> <td>{{u.profile}}</td> <td><a type=button class="btn btn-warning btn-bordered btn-xs" ng-click=editar(u.id_users)>Editar</a></td> </tr> </tbody> </table> </div> </div> </div> </div> <growl-notifications ng-repeat="notify in notifications"> <growl-notification ng-if=true class={{notify.style}}> <div class=title>{{notify.title}}</div> {{notify.message}} </growl-notification> </growl-notifications> </div>
+<pageheader pagename="Usuarios" subtitle="Directorio activo"></pageheader>
+<div class="conter-wrapper">
+	<div class="row" ng-if="!showList">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Gesti&oacute;n de Usuario
+						<div class="panel-control pull-right">
+							<a class="panelButton"><i class="fa fa-refresh"></i></a> <a
+								class="panelButton"><i class="fa fa-minus"></i></a> <a
+								class="panelButton"><i class="fa fa-remove"></i></a>
+						</div>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">C.C.</label>
+							<div class="col-sm-4">
+								<p class="form-control-static">{{user.cc_user}}</p>
+							</div>
+							<label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
+							<div class="col-sm-4">
+								<p class="form-control-static">{{user.name}}</p>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-2 control-label">Correo</label>
+							<div class="col-sm-4">
+								<p class="form-control-static">{{user.mail}}</p>
+							</div>
+							<label for="inputtext" class="col-sm-2 control-label">Telefono</label>
+							<div class="col-sm-4">
+								<p class="form-control-static">{{user.phone}}</p>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label for="inputtext" class="col-sm-2 control-label">Estado</label>
+							<div class="col-sm-4">
+								<div class="onoffswitch">
+									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchUser" ng-model="user.enabled" ng-click="activeUser()">
+									<label class="onoffswitch-label" for="switchUser">
+										<span class="onoffswitch-inner"></span>
+										<span class="onoffswitch-switch"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Planes
+						<div class="panel-control pull-right">
+							<a class="panelButton"><i class="fa fa-refresh"></i></a> <a
+								class="panelButton"><i class="fa fa-minus"></i></a> <a
+								class="panelButton"><i class="fa fa-remove"></i></a>
+						</div>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="col-sm-4" ng-repeat="p in planes">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="text-center">
+									<h4>{{p.name}}</h4>
+									<button class="btn btn-default" ng-click="suscribe(p.id_plans)" ng-disabled="!user.enabled">Inscribir</button>
+								</div>
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-if="showList">
+		<div class="col-sm-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Lista de Usuarios
+						<div class="panel-control pull-right">
+							<a class="panelButton"><i class="fa fa-refresh"></i></a> <a
+								class="panelButton"><i class="fa fa-minus"></i></a> <a
+								class="panelButton"><i class="fa fa-remove"></i></a>
+						</div>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Correo</th>
+								<th>Perfil</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="u in users" >
+								<td>{{u.name}}</td>
+								<td>{{u.mail}}</td>
+								<td>{{u.profile}}</td>
+								<td><a type="button" class="btn btn-warning btn-bordered btn-xs" ng-click="editar(u.id_users)">Editar</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<growl-notifications ng-repeat="notify in notifications">
+		<growl-notification ng-if="true" class="{{notify.style}}">
+			<div class="title">{{notify.title}}</div>
+			{{notify.message}}
+		</growl-notification>
+	</growl-notifications>
+</div>

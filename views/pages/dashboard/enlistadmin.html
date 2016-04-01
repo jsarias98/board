@@ -1,1 +1,108 @@
-<pageheader pagename=Incorporacion subtitle="Red Exodo"></pageheader> <div class=conter-wrapper> <div class=row> <div class=col-md-12> <div class="panel panel-primary"> <div class=panel-heading> <h3 class=panel-title> Invitar <div class="panel-control pull-right"> <a class=panelButton><i class="fa fa-refresh"></i></a> <a class=panelButton><i class="fa fa-minus"></i></a> <a class=panelButton><i class="fa fa-remove"></i></a> </div> </h3> </div> <div class=panel-body> <form ng-submit=invitar()> <div class=form-group> <label for=exampleInputEmail1 class="col-md-2 control-label">correo</label> <div class=col-md-4> <input type=email class="form-control col-md-4" placeholder="Ingresar Correo" ng-model=enlist.mail required> </div> <label for=exampleInputEmail1 class="col-md-2 control-label">Nombre</label> <div class=col-md-4><input type=text class=form-control placeholder="Ingresar Nombre" ng-model=enlist.name required> </div> </div> <button type=submit class="btn btn-default">Enviar</button> </form> </div> </div> </div> </div> <div class=row> <div class=col-md-12> <div class="panel panel-default"> <div class=panel-heading> <h3 class=panel-title> Nivel de Progreso <div class="panel-control pull-right"> <a class=panelButton><i class="fa fa-refresh"></i></a> <a class=panelButton><i class="fa fa-minus"></i></a> <a class=panelButton><i class="fa fa-remove"></i></a> </div> </h3> </div> <div class=panel-body> <label for=inputtext class="col-sm-2 control-label">Plan</label> <div class=col-sm-4> <select class=form-control ng-model=data.selectedPlan ng-options="plan.name for plan in planUsers" ng-change=consultar() )> </select> </div> <div class=col-md-6> <progressbar max=100 value=userVoucher.length> <span style="color: black; white-space: nowrap;">{{userVoucher.length}} / 100</span></progressbar> </div> </div> </div> </div> </div> <div class=row> <div class=col-sm-3></div> <div class=col-sm-6> <div class="panel panel-default"> <div class=panel-body> <div class=text-center> <h4>Twelve</h4> </div> </div> </div> </div> <div class=col-sm-3></div> </div> <div class=col-sm-3 ng-repeat="u in userVoucher"> <div class="panel panel-default"> <div class=panel-body> <div class=text-center> <span class="badge primaryb">{{ u.generation}} - G</span> <hr> <img alt={{u.name}} class=avatar-list ng-src="{{getAvatar(u.gender, u.generation)}}"> <h4>{{u.name}}</h4> <span>{{u.mail}}</span> </div> </div> </div> </div> </div> <div ng-controller=ModalDemoCtrl> <script type=text/ng-template id=myModalContent.html> <div class="modal-header"> <h3 class="modal-title">{{items.title}}</h3> </div> <div class="modal-body"> <div class="high-padding text-center"> {{items.message;}} </div> </div> <div class="modal-footer"> <button class="btn btn-primary btn-rounded" ng-click="ok()">Confirm</button> </div> </script> </div>
+<pageheader pagename="Incorporacion" subtitle="Red Exodo"></pageheader>
+<div class="conter-wrapper">
+	<div class="row" >
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Invitar
+						<div class="panel-control pull-right">
+							<a class="panelButton"><i class="fa fa-refresh"></i></a> <a
+								class="panelButton"><i class="fa fa-minus"></i></a> <a
+								class="panelButton"><i class="fa fa-remove"></i></a>
+						</div>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<form ng-submit="invitar()" >
+						<div class="form-group">
+							<label for="exampleInputEmail1" class="col-md-2 control-label">correo</label>
+							<div class="col-md-4">
+								<input
+									type="email" class="form-control col-md-4" 
+									placeholder="Ingresar Correo" ng-model="enlist.mail" required >
+							</div>
+							<label for="exampleInputEmail1" class="col-md-2 control-label" >Nombre</label>
+							<div class="col-md-4"><input
+								type="text" class="form-control" 
+								placeholder="Ingresar Nombre" ng-model="enlist.name" required >
+							</div>
+						</div>
+						<button type="submit" class="btn btn-default">Enviar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" >
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Nivel de Progreso
+						<div class="panel-control pull-right">
+							<a class="panelButton"><i class="fa fa-refresh"></i></a> <a
+								class="panelButton"><i class="fa fa-minus"></i></a> <a
+								class="panelButton"><i class="fa fa-remove"></i></a>
+						</div>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<label for="inputtext" class="col-sm-2 control-label">Plan</label>
+					<div class="col-sm-4">
+						<select class="form-control" ng-model="data.selectedPlan" ng-options="plan.name for plan in planUsers" ng-change="consultar()")>
+						
+						</select>
+					</div>
+					<div class="col-md-6">
+					<progressbar max="100" value="userVoucher.length"> <span
+						style="color: black; white-space: nowrap;">{{userVoucher.length}} / 100</span></progressbar>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div class="panel panel-default">
+
+			<div class="panel-body">
+				<div class="text-center">
+					<h4>Twelve</h4>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class="col-sm-3"></div>
+	</div>
+	<div class="col-sm-3" ng-repeat="u in userVoucher">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="text-center">
+					<span class="badge primaryb">{{ u.generation}} - G</span>
+					<hr>
+					<img alt="{{u.name}}" class="avatar-list"
+						ng-src="{{getAvatar(u.gender, u.generation)}}">
+					<h4>{{u.name}}</h4>
+					<span>{{u.mail}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-controller="ModalDemoCtrl">
+	<script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">{{items.title}}</h3>
+            </div>
+            <div class="modal-body">
+                <div class="high-padding text-center">
+                    {{items.message;}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-rounded" ng-click="ok()">Confirm</button>
+            </div>
+        </script>
+</div>
